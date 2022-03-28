@@ -1,0 +1,7 @@
+{
+  "name": "nested-routing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
