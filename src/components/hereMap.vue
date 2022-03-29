@@ -1,6 +1,6 @@
 <template>
 <div ref="mapElement" class="map loading">
-  <div style="position: absolute; background-color: transparent; width: 100%; height: 100%; z-index: 1000;"/>
+  <div style="position: absolute; background-color: transparent; width: 100%; height: 98%; z-index: 1000; border: 2px solid black;"/>
 </div>
 </template>
 

@@ -16,7 +16,6 @@
         </ion-col>
 
         <ion-col size="12" class="map-col" v-if="!isDelivery">
-          <input type="text">
           <hereMap class="map" />
         </ion-col>
       </ion-row>
@@ -34,7 +33,9 @@
           <locationDelivery v-else />
         </ion-col>
 
-        <ion-col size="12" size-lg="8" size-xl="9" class="map-col"> <hereMap class="map" /> </ion-col>
+        <ion-col size="12" size-lg="8" size-xl="9" class="map-col"> 
+          <hereMap class="map" /> 
+        </ion-col>
       </ion-row>
 
     </ion-grid>
