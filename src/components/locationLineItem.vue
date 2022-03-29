@@ -26,7 +26,6 @@
     <ion-row class="ion-text-start ion-align-items-center simple-row ion-justify-content-between color-dark" v-if="!detail">
       <ion-col class="small" v-if="storeLocation?.distance || storeLocation?.distance === 0">
         <span> {{ storeLocation.distance ? storeLocation.distance + "mi" : "0.00" }} | </span>
-
         <div>Store Hours</div>
       </ion-col>
     </ion-row>

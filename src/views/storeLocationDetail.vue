@@ -1,39 +1,31 @@
 <template>
 <ion-page>
   <ion-grid itemtype="http://schema.org/Restaurant" class="ion-no-padding">
+    
     <ion-toolbar mode="ios" color="white">
       <ion-button slot="end" @click="$emit('close')" fill="clear" color="medium" data-cy="button-close">
         <ion-icon slot="icon-only" :md="closeOutline" :ios="closeOutline" />
       </ion-button>
-
       <ion-title class="ion-text-center">{{cachedLocation.slug}}</ion-title>
     </ion-toolbar>
+    
     <ion-row v-if="true" class="detail-map">
-      <ion-col>
-        <hereMap class="map" />
-      </ion-col>
+      <ion-col> <hereMap class="map" /> </ion-col>
     </ion-row>
 
     <ion-row class="ion-padding-horizontal" v-if="true">
-      <ion-col size="12">
-        <div>Some information about the store</div>
-      </ion-col>
-      <ion-col class="ion-text-center" size="12">
-        <div>a list of order types for the store</div>
-      </ion-col>
+      <ion-col size="12"> <div>Some information about the store</div> </ion-col>
+      <ion-col class="ion-text-center" size="12"> <div>a list of order types for the store</div></ion-col>
     </ion-row>
-    <ion-button
-      color="primary"
-      expand="full"
-      class="ion-no-margin force-bottom full-width ion-text-capitalize"
-      size="large"
-      data-cy="button-pickup"
-    >
+   
+    <ion-button color="primary" expand="full" class="ion-no-margin force-bottom full-width ion-text-capitalize" size="large">
       Pick up here
     </ion-button>
+
   </ion-grid>
 </ion-page>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { IonToolbar, IonTitle, IonGrid, IonRow, IonCol, IonIcon, IonButton, IonPage } from "@ionic/vue";

@@ -1,9 +1,7 @@
 <template>
 <div ref="mapElement" class="map loading">
-    <div
-      style="position: absolute; background-color: transparent; width: 100%; height: 100%; z-index: 1000; display: none"
-    />
-  </div>
+  <div style="position: absolute; background-color: transparent; width: 100%; height: 100%; z-index: 1000;"/>
+</div>
 </template>
 
 <script lang="ts">

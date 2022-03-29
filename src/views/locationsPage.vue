@@ -1,18 +1,15 @@
 <template>
   <ion-page>
     <ion-grid>
-      <!-- mobile -->
+
+      <!-- MOBILE VIEW -->
       <ion-row class="ion-justify-content-between ion-padding" v-if="isMobile">
           <ion-segment :value="orderType" mode="md" class="ion-padding-bottom" @ionChange="orderTypeChanged($event)" v-if="!isDetailPage">
-            <ion-segment-button value="Pickup" >
-              <ion-label>PickUp</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="Delivery" >
-              <ion-label>Delivery</ion-label>
-            </ion-segment-button>
+            <ion-segment-button value="Pickup" > <ion-label>PickUp</ion-label> </ion-segment-button>
+            <ion-segment-button value="Delivery" > <ion-label>Delivery</ion-label> </ion-segment-button>
           </ion-segment>
 
-<!-- TODO: Figure out why ion-router-outlet isn't handling nested routes -->
+        <!-- TODO: Figure out why ion-router-outlet is wonky -->
         <ion-col size="12" class="radius ion-no-padding action-col" style="min-height: 87vh">
           <ion-router-outlet v-if="!isDelivery || isDetailPage" />
           <locationDelivery v-else />
@@ -24,38 +21,28 @@
         </ion-col>
       </ion-row>
 
-      <!-- desktop -->
+      <!-- DESKTOP VIEW -->
       <ion-row class="ion-justify-content-between ion-padding" v-else>
         <ion-col size="12" size-lg="4" size-xl="3" class="radius ion-no-padding action-col" style="overscroll-behavior: none">
           <ion-segment :value="orderType" mode="md" class="ion-padding-bottom"  @ionChange="orderTypeChanged($event)" v-if="!isDetailPage">
-            <ion-segment-button value="Pickup" >
-              <ion-label>PickUp</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="Delivery" >
-              <ion-label>Delivery</ion-label>
-            </ion-segment-button>
+            <ion-segment-button value="Pickup" > <ion-label>PickUp</ion-label> </ion-segment-button>
+            <ion-segment-button value="Delivery" > <ion-label>Delivery</ion-label> </ion-segment-button>
           </ion-segment>
 
-<!-- TODO: Figure out why ion-router-outlet isn't handling nested routes -->
+          <!-- TODO: Figure out why ion-router-outlet is wonky -->
           <ion-router-outlet v-if="!isDelivery || isDetailPage" />
-
           <locationDelivery v-else />
         </ion-col>
-        <ion-col size="12" size-lg="8" size-xl="9" class="map-col">
-          <hereMap class="map" />
-        </ion-col>
+
+        <ion-col size="12" size-lg="8" size-xl="9" class="map-col"> <hereMap class="map" /> </ion-col>
       </ion-row>
+
     </ion-grid>
   </ion-page>
 </template>
+
 <script lang="ts">
-import { 
-IonPage, 
-IonGrid,
-IonRow, 
-IonCol, 
-IonLabel, 
-IonSegmentButton, IonSegment, IonRouterOutlet } from "@ionic/vue";
+import { IonPage, IonGrid, IonRow, IonCol, IonLabel, IonSegmentButton, IonSegment, IonRouterOutlet } from "@ionic/vue";
 import locationDelivery from '@/components/locationDelivery.vue'
 import { defineComponent, computed } from "vue";
 import { useStore } from "vuex";
@@ -63,10 +50,17 @@ import hereMap from '@/components/hereMap.vue'
 
 
 export default defineComponent({
-  components: {  IonRow, IonCol, IonLabel, IonSegmentButton, IonSegment, locationDelivery, hereMap, 
-  IonRouterOutlet,
-  IonPage,
-  IonGrid,
+  components: {  
+    IonRow, 
+    IonCol, 
+    IonLabel, 
+    IonSegmentButton, 
+    IonSegment, 
+    locationDelivery, 
+    hereMap, 
+    IonRouterOutlet,
+    IonPage,
+    IonGrid,
   },
   setup() {
     const store = useStore();
@@ -79,17 +73,11 @@ export default defineComponent({
     }
   },
   methods: {
-    orderTypeChanged(e: any) {
-      this.orderType = e.detail.value
-    },
+    orderTypeChanged(e: any) { this.orderType = e.detail.value },
   },
   computed: {
-    isDetailPage(): boolean {
-      return this.$router.currentRoute.value.name === "Location Detail";
-    },
-    isDelivery(): boolean {
-      return this.orderType == "Delivery"
-    }
+    isDetailPage(): boolean { return this.$router.currentRoute.value.name === "Location Detail"; },
+    isDelivery(): boolean { return this.orderType == "Delivery" }
   } 
 });
 </script>
