@@ -1,35 +1,35 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/tabs/tab1'
+  { 
+    path: "/",
+    redirect: "location"
   },
   {
-    path: '/tabs/',
-    component: TabsPage,
+    path: "/location",
+    name: "Locations",
+    meta: {
+      title: "Find a nearby Donatos",
+      description: "",
+      hideFooter: true,
+    },
+    component: () => import("@/views/locationsPage.vue"),
     children: [
       {
-        path: '',
-        redirect: '/tabs/tab1'
+        path: "/location",
+        name: "Pickup",
+        component: () => import("@/views/storeLocationList.vue"),
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        path: "/location/:slug",
+        name: "Location Detail",
+        component: () => import("@/components/modals/storeLocationDetailModal.vue"),
+        props: true,
       },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
-      }
-    ]
-  }
-]
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
